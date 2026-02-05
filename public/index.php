@@ -7,6 +7,12 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $kernel = new Kernel();
 
+//define routes
+$router = $kernel->getRouter();
+$router->addRoute("GET", "/", "Welcome to Taskey");
+$router->addRoute("GET", "/about", "About");
+$router->addRoute("GET", "/admin", "all your base are belong to us");
+
 /**
  * extract path from URI
  */
