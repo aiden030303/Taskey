@@ -1,7 +1,6 @@
 <?php
 
-use App\Controllers\HomeController;
-use App\Controllers\TaskController;
+use App\RouteProvider;
 use Framework\Kernel;
 use Framework\Request;
 
@@ -10,14 +9,8 @@ require __DIR__ . '/../vendor/autoload.php';
 $kernel = new Kernel();
 
 //define routes
-$router = $kernel->getRouter();
-$homeController = new HomeController();
-$router->addRoute("GET", "/", [$homeController, "index"]);
-$router->addRoute("GET", "/about", [$homeController, "about"]);
-
-$taskController = new TaskController();
-$router->addRoute("GET", "/tasks", [$taskController, "index"]);
-$router->addRoute("GET", "/tasks/create", [$taskController, "create"]);
+$routeProvider = new RouteProvider();
+$kernel->registerRoutes($routeProvider);
 
 /**
  * extract path from URI
