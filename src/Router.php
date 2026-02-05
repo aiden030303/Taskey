@@ -27,13 +27,13 @@ class Router
             //route not found return 404
             return new Response("Page not found", 404);
         }
-
-        $response = new Response($matchedRoute->return);
+        $callback = $matchedRoute->callback;
+        $response = $callback();
         return $response;
     }
 
-    public function addRoute(string $method, string $path, string $return): void
+    public function addRoute(string $method, string $path, callable $callback): void
     {
-        $this->routes[] = new Route($method, $path, $return);
+        $this->routes[] = new Route($method, $path, $callback);
     }
 }

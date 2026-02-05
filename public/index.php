@@ -1,5 +1,7 @@
 <?php
 
+use App\Controllers\HomeController;
+use App\Controllers\TaskController;
 use Framework\Kernel;
 use Framework\Request;
 
@@ -9,9 +11,13 @@ $kernel = new Kernel();
 
 //define routes
 $router = $kernel->getRouter();
-$router->addRoute("GET", "/", "Welcome to Taskey");
-$router->addRoute("GET", "/about", "About");
-$router->addRoute("GET", "/admin", "all your base are belong to us");
+$homeController = new HomeController();
+$router->addRoute("GET", "/", [$homeController, "index"]);
+$router->addRoute("GET", "/about", [$homeController, "about"]);
+
+$taskController = new TaskController();
+$router->addRoute("GET", "/tasks", [$taskController, "index"]);
+$router->addRoute("GET", "/tasks/create", [$taskController, "create"]);
 
 /**
  * extract path from URI
