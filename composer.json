@@ -1,5 +1,5 @@
 {
-    "name": "yourname/maestro",
+    "name": "fransblauw/maestro",
     "type": "framework",
     "version": "0.1",
     "autoload": {
@@ -10,7 +10,6 @@
     },
     "require": {
         "php": "^8.2",
-        "ext-pdo": "*",
         "twig/twig": "^3.21"
     },
     "require-dev": {
